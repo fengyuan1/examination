@@ -4,7 +4,7 @@ use think\facade\Route;
 
 Route::group('', function () {
     //查询酒店列表
-    Route::post(':version/saleHotelList', ':version.SaleProduct/SaleHotelList');
+    Route::get(':version/exercise', ':version.Exercise/index');
 
 
 
