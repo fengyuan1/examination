@@ -17,7 +17,8 @@
             <th class='text-left nowrap'>标题</th>
             <th class='text-left nowrap'>发布时间</th>
             <th class='text-left nowrap'>来源</th>
-            <th class='text-left nowrap'>岗位链接</th>
+<!--            <th class='text-left nowrap'>岗位链接</th>-->
+            <th class='text-left nowrap'>功能</th>
             <th></th>
         </tr>
         </thead>
@@ -36,16 +37,16 @@
             <td class='text-left nowrap'>
                 <p class="color-text">{$vo.extence|default='-'}</p>
             </td>
+<!--            <td class='text-left nowrap'>-->
+<!--                <p class="color-text">-->
+<!--                    {foreach $vo.link as $ke=>$voo}-->
+<!--                    <a href="{$voo|default='#'}">{$voo|default=''}</a><br>-->
+<!--                    {/foreach}-->
+<!--                </p>-->
+<!--            </td>-->
             <td class='text-left nowrap'>
-                <p class="color-text">
-                    {foreach $vo.link as $ke=>$voo}
-                    <a href="{$voo|default='#'}">{$voo|default=''}</a><br>
-                    {/foreach}
-                </p>
-            </td>
-            <td class='text-left nowrap'>
-                {if auth("remove")}
-                <a data-dbclick class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要删除该日志吗？" data-action="{:url('remove')}" data-value="id#{$vo.id}" data-csrf="{:systoken('remove')}">删 除</a>
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-xs" data-title="查看详情" data-modal='{:url("edit")}?id={$vo.id}'>查 看</a>
                 {/if}
             </td>
         </tr>

@@ -7,6 +7,12 @@ use think\facade\Db;
 class Exercise extends Controller
 {
 
+    /**
+     * 当前操作数据库
+     * @var string
+     */
+    protected $table = 'institution';
+
     public function index(){
       $data=Db::name('institution')->order('data desc');
 //      halt($data->select());
@@ -30,5 +36,23 @@ class Exercise extends Controller
        }
 //       halt($data);
    }
+
+    //查看详情
+    public function edit()
+    {
+        $this->_applyFormToken();
+        $id=input('id');
+        $result=Db::name('institution')->where('id',$id)->find();
+
+
+            $v['link']=[];
+            if(isset($result['link_address'])){
+                $link_address=explode(';',$result['link_address']);
+                $result['link']=$link_address;
+            }
+
+        $this->assign('detail',$result);
+        $this->_form($this->table, 'form');
+    }
 
 }

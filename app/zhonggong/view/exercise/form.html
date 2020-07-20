@@ -1,0 +1,27 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+
+    <div class="layui-card-body">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">岗位链接</label>
+            <div class="layui-input-block">
+
+                    {foreach $detail.link as $ke=>$voo}
+                    <a href="{$voo|default='#'}" download="{$voo|default='#'}" target="_blank">{$voo|default=''}</a><br>
+                    {/foreach}
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">详情</label>
+            <p  class="layui-input-block">{$detail.content}</p>
+        </div>
+    </div>
+
+
+</form>
+
+{block name='script'}
+
+{/block}
