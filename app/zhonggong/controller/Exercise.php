@@ -55,4 +55,17 @@ class Exercise extends Controller
         $this->_form($this->table, 'form');
     }
 
+    //删除数据
+    public function remove(){
+        $this->_applyFormToken();
+        $id=input('id');
+        $result=Db::name('institution')->where('id',$id)->delete();
+        if($result){
+            return $this->success('删除成功','');
+        }else{
+            return $this->error('删除失败','');
+        }
+    }
+
+
 }
