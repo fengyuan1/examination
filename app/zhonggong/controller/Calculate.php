@@ -29,7 +29,7 @@ class Calculate extends Controller
            }
       }
 
-      $this->replenish();
+//      $this->replenish();
     }
 
     /**
