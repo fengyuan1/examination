@@ -44,7 +44,7 @@ class Calculate extends Controller
         foreach ($data as $k=>$v ){
             $area=Db::name('wy_area')->select()->toArray();
             foreach ($area as $kk=>$vo){
-            $name_len=strlen($vo['name'])<0?3:strlen($vo['name']);
+            $name_len=strlen($vo['name'])-3<0?3:strlen($vo['name']);
 
                 if(strpos($v['title'],substr($vo['name'],0,$name_len))!==false){
                     Db::name('institution')->where('id',$v['id'])->update([
